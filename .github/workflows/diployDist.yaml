@@ -9,4 +9,20 @@ jobs :
                 echo "Git Clone.."
                 echo "${{toJson(github)}}"
                 git clone https://github.com/${{github.repository}}.git
+
+            - name : "install node"
+              uses : actions/setup-node@v2
+              with : 
+                node-version : 20
+
+            - name : "print node version"
+              run : node -v
+
+            - name : "install dependencies"
+              run : npm ci
+
+            - name : "run test"
+              run : npm run test
+
+
     
